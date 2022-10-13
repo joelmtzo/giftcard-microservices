@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/order")
+@RequestMapping(value = "/api")
 public class OrderManagementController {
 
     private final OrderManagementService service;
@@ -20,7 +20,7 @@ public class OrderManagementController {
         this.service = service;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/order", method = RequestMethod.POST)
     public ResponseEntity<CreateOrderResponse> cd(@RequestBody CreateOrderRequest request) {
         CreateOrderResponse response = service.create(request);
 

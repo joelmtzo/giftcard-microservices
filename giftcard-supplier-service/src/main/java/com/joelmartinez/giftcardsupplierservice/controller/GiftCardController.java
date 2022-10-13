@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/gift-card")
+@RequestMapping(value = "/api")
 public class GiftCardController {
 
     private final GiftCardService service;
@@ -20,7 +20,7 @@ public class GiftCardController {
         this.service = service;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/gift-card", method = RequestMethod.POST)
     public ResponseEntity<GiftCardResponse> generate(@RequestBody GiftCardRequest request) {
         GiftCardResponse response = service.generate(request.getValue());
 
