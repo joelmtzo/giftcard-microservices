@@ -1,8 +1,8 @@
 package com.joelmartinez.ordermanagementservice.controller;
 
-import com.joelmartinez.ordermanagementservice.controller.service.OrderManagementService;
-import com.joelmartinez.ordermanagementservice.controller.service.request.CreateOrderRequest;
-import com.joelmartinez.ordermanagementservice.controller.service.response.CreateOrderResponse;
+import com.joelmartinez.ordermanagementservice.service.OrderManagementService;
+import com.joelmartinez.ordermanagementservice.service.request.CreateOrderRequest;
+import com.joelmartinez.ordermanagementservice.service.response.CreateOrderResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

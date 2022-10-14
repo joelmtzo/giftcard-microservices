@@ -3,39 +3,22 @@ package com.joelmartinez.giftcardsupplierservice.service.impl;
 import com.joelmartinez.giftcardsupplierservice.service.GiftCardService;
 import com.joelmartinez.giftcardsupplierservice.service.response.GiftCardResponse;
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
+@Log4j2
 @Service
 public class GiftCardServiceImpl implements GiftCardService {
 
-    private final WebClient.Builder webClient;
-
-    public GiftCardServiceImpl(WebClient.Builder webClient) {
-        this.webClient = webClient;
-    }
-
     @Override
     public GiftCardResponse generate(double value) {
+        log.info("Gift Card service - generate GC with value {}", value);
+
         GiftCardResponse response = new GiftCardResponse();
         response.setUuid(UUID.randomUUID().toString());
         response.setValue(value);
-
-        // Prepare notification message
-        SendMessageRequest request = new SendMessageRequest();
-        request.setPhone("+524424829532");
-        request.setMessage("Your product has been delivered successfully, please check your inbox.");
-
-        // Call notification service to send SMS message to customer
-        SendMessageResponse sendMessageResponse = webClient.build().post()
-                .uri("http://notification-service/api/notification")
-                .body(Mono.just(request), SendMessageRequest.class)
-                .retrieve()
-                .bodyToMono(SendMessageResponse.class)
-                .block();
 
         return response;
     }

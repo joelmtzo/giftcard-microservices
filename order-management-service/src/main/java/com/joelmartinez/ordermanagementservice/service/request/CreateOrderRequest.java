@@ -1,4 +1,4 @@
-package com.joelmartinez.ordermanagementservice.controller.service.request;
+package com.joelmartinez.ordermanagementservice.service.request;
 
 import lombok.Data;
 
